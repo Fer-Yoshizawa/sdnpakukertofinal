@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staf Pengajar — SDN Pakukerto II</title>
+  <meta name="description" content="Profil staf pengajar profesional SDN Pakukerto II." />
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="has-back">
+
+  <header class="site-header">
+    <div class="container">
+      <a href="profil-sekolah.html" class="header-back">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Staf Pengajar
+      </a>
+      <a href="index.html" class="brand">
+        <img class="brand__logo" src="assets/logo/logo-spada.png" alt="" width="512" height="488" />
+        SDN PAKUKERTO II
+      </a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="index.html">Beranda</a>
+        <a href="profil-sekolah.html">Profil Sekolah</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="prestasi.html">Prestasi</a>
+        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
+        <a href="contact.html">Kontak</a>
+      </nav>
+      <a href="absen.html" class="nav-guru-link">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="nav-guru-link__label">Login Guru</span>
+      </a>
+    </div>
+  </header>
+  <!--
+    Catatan: menu "Portal Siswa/Guru/Ortu" (login absensi & nilai) sengaja belum
+    dipasang di Fase 1 ini karena fiturnya belum dibangun. Rencananya akan
+    ditambahkan lagi sebagai modul Portal Akademik terpisah di Fase 2.
+  -->
+  <nav class="bottom-nav" aria-label="Navigasi aplikasi">
+    <ul class="bottom-nav__list">
+      <li class="bottom-nav__item">
+        <a href="index.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><path d="M4 11.5L12 4l8 7.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9a1 1 0 001 1h4v-6h2v6h4a1 1 0 001-1v-9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="profil-sekolah.html" class="bottom-nav__link is-active">
+          <svg viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-6h6v6M9 10h.01M15 10h.01M9 14h.01M15 14h.01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="prestasi.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><path d="M8 4h8v4a4 4 0 01-8 0V4z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 5H5v2a3 3 0 003 3M16 5h3v2a3 3 0 01-3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12v4m-3 4h6m-3 0v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Prestasi</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="ekstrakurikuler.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-width="2"/><path d="M12 4c2.5 2.5 2.5 13 0 16M12 4c-2.5 2.5-2.5 13 0 16M4.5 9h15M4.5 15h15" stroke-width="1.6"/></svg>
+          <span>Ekskul</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="contact.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2 2C10.5 20 4 13.5 4 6a2 2 0 011-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Kontak</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header page-header--center">
+      <div class="container">
+        <h1>Staf Pengajar</h1>
+        <p>Mengenal lebih dekat para pendidik dan tenaga kependidikan di SDN Pakukerto II yang berdedikasi membimbing peserta didik.</p>
+      </div>
+    </div>
+
+    <section class="section--alt">
+      <div class="container">
+        <div class="staff-grid staff-grid--3col">
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/images/placeholder/avatar-placeholder.svg" alt="" />
+            <h3>Endi Yulianto, S.Pd.I.</h3>
+            <p class="staff-card__role">Kepala Sekolah</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/images/placeholder/avatar-placeholder.svg" alt="" />
+            <h3>Dra. Saniah</h3>
+            <p class="staff-card__role">Ketua Komite</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/GURU/1.%20FOTO_EKA%20ZM.png" alt="Eka Zahrotul Mufidah, S.Pd." />
+            <h3>Eka Zahrotul Mufidah, S.Pd.</h3>
+            <p class="staff-card__role">Guru Kelas 1</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/GURU/1.%20FOTO%204X6_NUR%20AHMAD%20WIJAYA.png" alt="Nur Ahmad Wijaya, S.Pd." />
+            <h3>Nur Ahmad Wijaya, S.Pd.</h3>
+            <p class="staff-card__role">Guru Kelas 2 &amp; PJOK</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/images/placeholder/avatar-placeholder.svg" alt="" />
+            <h3>Mela Oktaviani, S.Pd.</h3>
+            <p class="staff-card__role">Guru Kelas 3</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/GURU/4%20x%206%20cm%20Bu%20Eni.png" alt="Eny Kusrini, S.Pd." />
+            <h3>Eny Kusrini, S.Pd.</h3>
+            <p class="staff-card__role">Guru Kelas 4</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/GURU/FOTO_SEKAR%20AJENG%20WIDYANINGGAR.jpg.jpeg" alt="Sekar Ajeng Widyaninggar, S.Pd.SD." />
+            <h3>Sekar Ajeng Widyaninggar, S.Pd.SD.</h3>
+            <p class="staff-card__role">Guru Kelas 5</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/GURU/4%20x%206%20cm%20Bu%20Sukini%20(2).png" alt="Sukini, S.Pd.SD." />
+            <h3>Sukini, S.Pd.SD.</h3>
+            <p class="staff-card__role">Guru Kelas 6</p>
+          </article>
+
+          <article class="staff-card">
+            <img class="staff-card__photo" src="assets/images/placeholder/avatar-placeholder.svg" alt="" />
+            <h3>Khoiriyah Permatasari, S.Pd.</h3>
+            <p class="staff-card__role">Guru PAI &amp; BTQ</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-brand__name">SDN PAKUKERTO II</p>
+        <p>Mewujudkan peserta didik yang beriman, bertaqwa, mengikuti tuntutan global, berkarakter, dan berprestasi.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Website resmi">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+          <a href="#" aria-label="Bagikan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="18" cy="5" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="12" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="19" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.1 10.8l7.8-4.4M8.1 13.2l7.8 4.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Tautan Cepat</h3>
+        <ul>
+          <li><a href="profil-sekolah.html">Profil Sekolah</a></li>
+          <li><a href="profil-sekolah.html#visi-misi">Visi Misi</a></li>
+          <li><a href="agenda.html">Agenda</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Informasi</h3>
+        <ul>
+          <li><a href="prestasi.html">Prestasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Kontak Kami</h3>
+        <ul>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <span>Jl. Bulu Sakti No. 34, Dusun Kemiri, Desa Pakukerto, Kecamatan Sukorejo</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5c0 8.3 6.7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            <span>081252031750</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 6.5l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+            <span>pakukerto2@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 SDN PAKUKERTO II. All rights reserved.</div>
+  </footer>
+
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

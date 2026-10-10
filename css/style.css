@@ -1,0 +1,3372 @@
+
+/* ---------- 1. Base & typography ---------- */
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+/* ---------- 2. Layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+main {
+  display: block;
+}
+
+section {
+  padding-block: var(--space-9);
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.section-head__text h2 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-2);
+}
+
+.section-head__text p {
+  font-size: var(--fs-base);
+  max-width: 46ch;
+}
+
+.section-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-8);
+}
+
+.section-intro h2 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-3);
+}
+
+.section-intro__cta {
+  margin-top: var(--space-4);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-600);
+  margin-bottom: var(--space-3);
+}
+
+.link-arrow {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy-700);
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.link-arrow:hover {
+  color: var(--color-gold-600);
+}
+
+/* ---------- 3. Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background-color var(--transition-fast), color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-gold-500);
+  color: var(--color-navy-900);
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-white);
+}
+
+.btn-outline-navy {
+  background: transparent;
+  color: var(--color-navy-800);
+  border-color: var(--color-border-strong);
+}
+
+.btn-outline-navy:hover {
+  background: var(--color-bg-alt);
+  border-color: var(--color-navy-700);
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 0.6rem 1.1rem;
+  font-size: var(--fs-xs);
+}
+
+/* ---------- 4. Header & navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--header-height);
+  column-gap: var(--space-6);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  font-size: var(--fs-md);
+  color: var(--color-navy-900);
+  grid-column: 1;
+  justify-self: start;
+}
+
+.brand__logo {
+  height: 28px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+.header-back {
+  display: none;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+  grid-column: 2;
+  justify-self: center;
+}
+
+.main-nav a {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+  position: relative;
+  padding-block: var(--space-1);
+  transition: color var(--transition-fast);
+}
+
+.main-nav a:hover {
+  color: var(--color-navy-900);
+}
+
+.main-nav a[aria-current="page"] {
+  color: var(--color-navy-900);
+  font-weight: var(--fw-semibold);
+}
+
+.nav-guru-link {
+  /* Kolom ke-3 dari grid header (1fr auto 1fr) ini sebelumnya
+     kosong -- makanya link ini bisa nempel di sini tanpa
+     restrukturisasi apa-apa. */
+  grid-column: 3;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.nav-guru-link:hover {
+  color: var(--color-navy-900);
+  border-color: var(--color-navy-900);
+}
+
+.nav-guru-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.main-nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--color-gold-500);
+  border-radius: var(--radius-full);
+}
+
+.header-account {
+  grid-column: 3;
+  justify-self: end;
+  position: relative;
+}
+
+.user-chip__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy-900);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.user-chip__trigger:hover {
+  background: var(--color-bg-alt);
+  border-color: var(--color-navy-700);
+}
+
+.user-chip__avatar {
+  font-size: var(--fs-md);
+  line-height: 1;
+}
+
+.user-chip__name {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.user-chip__name.is-fading {
+  opacity: 0;
+}
+
+.user-chip__caret {
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.user-chip__trigger[aria-expanded="true"] .user-chip__caret {
+  transform: rotate(180deg);
+}
+
+.user-chip__menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 200px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.98);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.user-chip__menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.user-chip__link,
+.user-chip__logout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  transition: background var(--transition-fast);
+}
+
+.user-chip__link:hover,
+.user-chip__logout:hover {
+  background: var(--color-bg-alt);
+}
+
+/* ---------- 5. Footer ---------- */
+.site-footer {
+  background: var(--color-navy-900);
+  color: var(--color-text-on-dark-muted);
+}
+
+.footer-top {
+  padding-block: var(--space-9) var(--space-8);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: var(--space-6);
+}
+
+.footer-brand__name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  font-size: var(--fs-md);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+}
+
+.footer-brand p {
+  color: var(--color-text-on-dark-muted);
+  font-size: var(--fs-sm);
+  max-width: 32ch;
+}
+
+.footer-social {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.footer-social a {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.footer-social a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-col h3 {
+  font-size: var(--fs-sm);
+  color: var(--color-white);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-4);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-col a,
+.footer-col li {
+  font-size: var(--fs-sm);
+  color: var(--color-text-on-dark-muted);
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--color-white);
+}
+
+.footer-contact li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.footer-contact svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-block: var(--space-5);
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--color-text-on-dark-muted);
+}
+
+/* ---------- 6. Hero (home) ---------- */
+.hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  color: var(--color-white);
+  /* Satu arah cahaya: gelap di kanan-bawah, sedikit hangat di kiri-atas.
+     Gradient 3-stop yang lama bikin warnanya "muter" dan kelihatan datar. */
+  background:
+    radial-gradient(760px 420px at 12% 18%, rgba(217, 147, 46, 0.14), transparent 62%),
+    linear-gradient(152deg, #3d2817 0%, #2b1b0e 68%, #1d1108 100%);
+}
+
+.hero__content {
+  max-width: 620px;
+}
+
+.hero__content h1 {
+  /* Wajib eksplisit: aturan global `h1,h2,h3,h4 { color: text-primary }`
+     ngalahin `color` warisan dari .hero, jadi judul jadi coklat di atas coklat. */
+  color: var(--color-text-on-dark);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-tight);
+  margin-bottom: var(--space-4);
+}
+
+.hero__content p {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: var(--fs-md);
+  max-width: 52ch;
+  margin-bottom: var(--space-6);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* ---------- 7. Page hero (inner pages, image banner) ---------- */
+.page-hero {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+  background: linear-gradient(160deg, #3d2817 0%, #2b1b0e 55%, #543821 100%);
+}
+
+.page-hero h1 {
+  color: var(--color-text-on-dark);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+}
+
+/* Simple text-only page header (used on Agenda / Prestasi / Staf / Ekstrakurikuler) */
+.page-header {
+  padding-block: var(--space-9) var(--space-7);
+  background: var(--color-bg-alt);
+}
+
+.page-header--center {
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+  margin-bottom: var(--space-3);
+}
+
+.page-header p {
+  font-size: var(--fs-md);
+  max-width: 620px;
+}
+
+.page-header--center p {
+  margin-inline: auto;
+}
+
+/* ---------- 8. Section headings shared above ---------- */
+
+/* ---------- 8a. School Introduction Video (home) ---------- */
+.video-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.video-intro__text h2 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-4);
+  animation: video-intro-fade-up 0.6s ease both;
+}
+
+.video-intro__text > p {
+  margin-bottom: var(--space-5);
+  animation: video-intro-fade-up 0.6s ease 0.08s both;
+}
+
+.video-intro__badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: var(--color-gold-100);
+  color: var(--color-gold-600);
+  margin-bottom: var(--space-6);
+  animation: video-intro-fade-up 0.6s ease 0.16s both;
+}
+
+.video-intro__cta {
+  animation: video-intro-fade-up 0.6s ease 0.24s both;
+}
+
+.video-intro__media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  animation: video-intro-fade-up 0.6s ease 0.12s both;
+  background: center/no-repeat;
+}
+
+.video-intro__media:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.video-intro__media video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-navy-900);
+}
+
+@keyframes video-intro-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- 9. Sambutan Kepala Sekolah ---------- */
+.sambutan__card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-7);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.sambutan__photo {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 4px solid var(--color-gold-100);
+}
+
+.sambutan__body h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-3);
+}
+
+.sambutan__body blockquote {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.sambutan__name {
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  font-size: var(--fs-sm);
+}
+
+.sambutan__role {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---------- 10. Agenda cards ---------- */
+.agenda-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.agenda-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.agenda-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+.agenda-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.agenda-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.agenda-card__date {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: var(--color-navy-900);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  text-align: center;
+  line-height: 1.1;
+}
+
+.agenda-card__date strong {
+  display: block;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+}
+
+.agenda-card__date span {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.agenda-card__body {
+  padding: var(--space-5);
+}
+
+.agenda-card__body h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-2);
+}
+
+.agenda-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.agenda-card__meta li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Full Agenda page variant (with tag + description + detail link) */
+.agenda-card--full .agenda-card__body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.agenda-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.agenda-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-gold-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agenda-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--color-border);
+}
+
+.agenda-card__desc {
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-4);
+}
+
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-7);
+}
+
+/* ---------- 11. Program keahlian showcase (home) ---------- */
+.program-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.program-showcase__media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+}
+
+.program-showcase__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.program-showcase__image.is-active {
+  opacity: 1;
+}
+
+.program-carousel {
+  overflow: hidden;
+}
+
+.program-carousel__track {
+  display: flex;
+  gap: var(--space-4);
+  width: max-content;
+  will-change: transform;
+}
+
+.program-mini-card {
+  flex: 0 0 280px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  transform: scale(0.92);
+  opacity: 0.75;
+  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.program-mini-card.is-active {
+  transform: scale(1.06);
+  opacity: 1;
+  border-color: var(--color-gold-500);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.program-mini-card__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--color-navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+}
+
+.program-mini-card h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-2);
+}
+
+.program-mini-card p {
+  font-size: var(--fs-xs);
+}
+
+/* Shared infinite auto-scroll carousel (used by Ekstrakurikuler on the homepage) */
+.marquee {
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--space-4);
+  animation: marquee-scroll 70s linear infinite;
+}
+
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- 12. Ekstrakurikuler ---------- */
+.ekskul-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.ekskul-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.ekskul-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.ekskul-card:hover img {
+  transform: scale(1.05);
+}
+
+.ekskul-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 24, 48, 0) 45%, rgba(10, 24, 48, 0.75) 100%);
+}
+
+.ekskul-marquee .ekskul-card {
+  flex: 0 0 300px;
+}
+
+.ekskul-card__label {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-3);
+  z-index: 2;
+  color: var(--color-white);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-base);
+}
+
+.section-head__nav-btns {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.icon-btn:hover {
+  background: var(--color-navy-900);
+  border-color: var(--color-navy-900);
+  color: var(--color-white);
+}
+
+/* ---------- 13. Staf pengajar cards ---------- */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.staff-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.staff-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.staff-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+.staff-card__photo {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  margin: 0 auto var(--space-4);
+  background: var(--color-bg-alt);
+}
+
+.staff-card h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-1);
+}
+
+.staff-card__role {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- 14. Prestasi cards ---------- */
+.prestasi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.prestasi-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.prestasi-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prestasi-card__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-navy-900);
+}
+
+.prestasi-card h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-2);
+}
+
+.prestasi-card p {
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- 15. Visi & Misi (profil) ---------- */
+.visi-misi {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.visi-card {
+  background: var(--color-navy-900);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.visi-card .eyebrow {
+  color: var(--color-gold-500);
+}
+
+.visi-card blockquote {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-relaxed);
+}
+
+.misi-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+}
+
+.misi-card h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-5);
+}
+
+.misi-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.misi-item {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.misi-item__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-navy-900);
+  color: var(--color-white);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.misi-item h3 {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-1);
+}
+
+.misi-item p {
+  font-size: var(--fs-sm);
+}
+
+/* Sejarah section */
+.sejarah {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.sejarah__text h2 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-4);
+}
+
+.sejarah__text p + p {
+  margin-top: var(--space-4);
+}
+
+.sejarah__photo img {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- 16. Dinamika kampus (profil) ---------- */
+.dinamika {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.dinamika__media {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+}
+
+.dinamika__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dinamika__image.is-active {
+  opacity: 1;
+}
+
+.dinamika__tabs {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-2);
+  background: rgba(10, 24, 48, 0.55);
+  backdrop-filter: blur(6px);
+  padding: var(--space-2);
+  border-radius: var(--radius-full);
+  z-index: 1;
+}
+
+.dinamika__tabs button {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.dinamika__tabs button[aria-selected="true"] {
+  background: var(--color-gold-500);
+  color: var(--color-navy-900);
+}
+
+.dinamika__panels {
+  transition: opacity 0.25s ease;
+}
+
+.dinamika__panels.is-transitioning {
+  opacity: 0;
+}
+
+.dinamika__panel {
+  display: none;
+}
+
+.dinamika__panel.is-active {
+  display: block;
+}
+
+.dinamika__body h3 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-3);
+}
+
+.dinamika__body > p {
+  margin-bottom: var(--space-5);
+}
+
+.dinamika__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.dinamika__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+}
+
+.dinamika__list svg {
+  flex-shrink: 0;
+  color: var(--color-gold-600);
+}
+
+/* ---------- 17. Struktur organisasi (profil) ---------- */
+.struktur {
+  text-align: center;
+}
+
+.struktur__lead {
+  max-width: 340px;
+  margin: 0 auto var(--space-6);
+  position: relative;
+}
+
+.struktur__lead .staff-card {
+  position: relative;
+}
+
+.struktur__badge {
+  position: absolute;
+  top: -12px;
+  right: -4px;
+  background: var(--color-gold-500);
+  color: var(--color-navy-900);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.struktur__connector {
+  width: 1px;
+  height: 32px;
+  background: var(--color-border-strong);
+  margin: 0 auto;
+}
+
+.struktur__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.avatar-placeholder {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-alt);
+  margin: 0 auto var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+/* ---------- 18. Program keahlian detail page ---------- */
+.program-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: stretch;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.program-feature__media {
+  position: relative;
+}
+
+.program-feature__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 320px;
+}
+
+.program-feature__caption {
+  position: absolute;
+  left: var(--space-6);
+  bottom: var(--space-5);
+  color: var(--color-white);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-md);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.program-feature__body {
+  padding: var(--space-7) var(--space-7) var(--space-7) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.program-feature__body h2 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-4);
+}
+
+.program-feature__body > p {
+  margin-bottom: var(--space-5);
+}
+
+.program-feature__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.program-feature__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.program-feature__list svg {
+  color: var(--color-gold-600);
+  flex-shrink: 0;
+}
+
+.keunggulan {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+}
+
+.keunggulan h2 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-4);
+}
+
+.keunggulan > p {
+  margin-bottom: var(--space-4);
+  max-width: 90ch;
+}
+
+.keunggulan-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.keunggulan-feature {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.keunggulan-feature__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-gold-100);
+  color: var(--color-gold-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.keunggulan-feature h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-1);
+}
+
+.keunggulan-feature p {
+  font-size: var(--fs-sm);
+}
+
+/* ---------- 18a. Program keahlian slider (pure CSS, radio-driven, infinite loop) ---------- */
+.program-slider {
+  position: relative;
+}
+
+.program-slider__radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.program-slider__viewport {
+  overflow: hidden;
+}
+
+.program-slider__track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.program-slider__track > .program-feature {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+#slide-1:checked ~ .program-slider__viewport .program-slider__track {
+  transform: translateX(0%);
+}
+#slide-2:checked ~ .program-slider__viewport .program-slider__track {
+  transform: translateX(-100%);
+}
+#slide-3:checked ~ .program-slider__viewport .program-slider__track {
+  transform: translateX(-200%);
+}
+#slide-4:checked ~ .program-slider__viewport .program-slider__track {
+  transform: translateX(-300%);
+}
+#slide-5:checked ~ .program-slider__viewport .program-slider__track {
+  transform: translateX(-400%);
+}
+
+.program-slider__nav {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--space-4);
+  pointer-events: none;
+}
+
+.program-slider__prev-group,
+.program-slider__next-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.program-slider__arrow {
+  display: none;
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  pointer-events: auto;
+}
+
+/* Only the prev/next pair matching the active slide is shown, so visually it
+   reads as a single fixed pair of controls whose target changes per slide. */
+#slide-1:checked ~ .program-slider__nav .program-slider__prev-group label:nth-child(1),
+#slide-1:checked ~ .program-slider__nav .program-slider__next-group label:nth-child(1) {
+  display: flex;
+}
+#slide-2:checked ~ .program-slider__nav .program-slider__prev-group label:nth-child(2),
+#slide-2:checked ~ .program-slider__nav .program-slider__next-group label:nth-child(2) {
+  display: flex;
+}
+#slide-3:checked ~ .program-slider__nav .program-slider__prev-group label:nth-child(3),
+#slide-3:checked ~ .program-slider__nav .program-slider__next-group label:nth-child(3) {
+  display: flex;
+}
+#slide-4:checked ~ .program-slider__nav .program-slider__prev-group label:nth-child(4),
+#slide-4:checked ~ .program-slider__nav .program-slider__next-group label:nth-child(4) {
+  display: flex;
+}
+#slide-5:checked ~ .program-slider__nav .program-slider__prev-group label:nth-child(5),
+#slide-5:checked ~ .program-slider__nav .program-slider__next-group label:nth-child(5) {
+  display: flex;
+}
+
+.program-slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.program-slider__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-border-strong);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+#slide-1:checked ~ .program-slider__dots label:nth-child(1),
+#slide-2:checked ~ .program-slider__dots label:nth-child(2),
+#slide-3:checked ~ .program-slider__dots label:nth-child(3),
+#slide-4:checked ~ .program-slider__dots label:nth-child(4),
+#slide-5:checked ~ .program-slider__dots label:nth-child(5) {
+  background: var(--color-gold-500);
+  transform: scale(1.15);
+}
+
+/* ---------- 19. Cek kelulusan (form) ---------- */
+.minimal-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.minimal-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+.back-link {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.back-link:hover {
+  color: var(--color-navy-900);
+}
+
+.form-section {
+  min-height: calc(100vh - var(--header-height) - 260px);
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-alt);
+  padding-block: var(--space-10);
+}
+
+.form-wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-wrap h1 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  margin-bottom: var(--space-3);
+}
+
+.form-wrap > p {
+  margin-bottom: var(--space-7);
+}
+
+.form-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-7);
+  text-align: left;
+}
+
+.form-field {
+  margin-bottom: var(--space-5);
+}
+
+.form-field label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-2);
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap svg {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}
+
+.input-wrap input,
+.input-wrap select {
+  width: 100%;
+  padding: 0.85rem var(--space-4) 0.85rem 2.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  background: var(--color-white);
+  appearance: none;
+  transition: border-color var(--transition-fast);
+}
+
+.input-wrap input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input-wrap input:focus,
+.input-wrap select:focus {
+  border-color: var(--color-navy-700);
+}
+
+.input-wrap.select::after {
+  content: "";
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-content: center;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-5);
+}
+
+.form-help {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  text-decoration: underline;
+}
+
+/* ---------- 20. Utility tags & badges ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.tag--akademik {
+  background: var(--tag-akademik-bg);
+  color: var(--tag-akademik-text);
+}
+
+.tag--sekolah {
+  background: var(--tag-sekolah-bg);
+  color: var(--tag-sekolah-text);
+}
+
+.tag--lomba {
+  background: var(--tag-lomba-bg);
+  color: var(--tag-lomba-text);
+}
+
+.tag--prakerin {
+  background: var(--tag-prakerin-bg);
+  color: var(--tag-prakerin-text);
+}
+
+.tag--dark {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-navy-900);
+}
+
+/* ---------- 20a. Auth modal (Login / Register) ---------- */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: rgba(10, 24, 48, 0.55);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.auth-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.auth-modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-7);
+  transform: scale(0.94) translateY(12px);
+  transition: transform 0.3s ease;
+}
+
+.auth-overlay.is-open .auth-modal {
+  transform: scale(1) translateY(0);
+}
+
+.auth-modal__close {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+}
+
+.auth-modal__title {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+
+.auth-modal__subtitle {
+  font-size: var(--fs-sm);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.auth-panel {
+  display: none;
+}
+
+.auth-panel.is-active {
+  display: block;
+}
+
+.auth-form__row {
+  margin-bottom: var(--space-5);
+}
+
+.auth-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.auth-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-gold-500);
+}
+
+.auth-form__switch {
+  text-align: center;
+  margin-top: var(--space-5);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+
+.auth-link {
+  color: var(--color-navy-800);
+  font-weight: var(--fw-semibold);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.form-error {
+  min-height: 1.2em;
+  margin-top: var(--space-1);
+  font-size: var(--fs-xs);
+  color: var(--tag-lomba-text);
+}
+
+.input-wrap input.has-error {
+  border-color: var(--tag-lomba-text);
+}
+
+.btn-spinner {
+  margin-right: var(--space-2);
+  vertical-align: -3px;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.auth-form.is-hidden {
+  display: none;
+}
+
+.auth-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  padding-block: var(--space-8);
+}
+
+.auth-success.is-visible {
+  display: flex;
+  animation: auth-success-in 0.35s ease;
+}
+
+.auth-success__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--tag-akademik-bg);
+  color: var(--tag-akademik-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-success p {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+@keyframes auth-success-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- 20b. Graduation Check — locked card & dashboard ---------- */
+.graduation-locked,
+.graduation-dashboard {
+  display: none;
+}
+
+.graduation-locked.is-active,
+.graduation-dashboard.is-active {
+  display: block;
+  animation: graduation-fade-in 0.4s ease;
+}
+
+@keyframes graduation-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.graduation-locked__card {
+  text-align: center;
+}
+
+.graduation-locked__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.graduation-locked__card h1 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-3);
+}
+
+.graduation-locked__card p {
+  margin-bottom: var(--space-6);
+}
+
+.graduation-status {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.graduation-status__emoji {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+}
+
+.graduation-status h2 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-6);
+}
+
+.graduation-status__meta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-9);
+}
+
+.graduation-status__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.graduation-status__label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.graduation-status__badge {
+  display: inline-flex;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-extrabold);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-full);
+  background: var(--tag-akademik-bg);
+  color: var(--tag-akademik-text);
+}
+
+.graduation-status__value {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+}
+
+.graduation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.graduation-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+}
+
+.graduation-card h3 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-5);
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.info-list__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.info-list__row dt {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+}
+
+.info-list__row dd {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  text-align: right;
+}
+
+.stat-block {
+  padding-block: var(--space-3);
+}
+
+.stat-block + .stat-block {
+  margin-top: var(--space-4);
+  border-top: 1px dashed var(--color-border);
+}
+
+.stat-block__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  color: var(--color-navy-900);
+}
+
+.stat-block--secondary .stat-block__value {
+  font-size: var(--fs-lg);
+  color: var(--color-gold-600);
+}
+
+.stat-block__label {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+.table-wrap {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.score-table th,
+.score-table td {
+  text-align: left;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--fs-sm);
+}
+
+.score-table th {
+  background: var(--color-bg-alt);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.score-table td {
+  border-top: 1px solid var(--color-border);
+  font-weight: var(--fw-medium);
+}
+
+.score-table tbody tr:hover {
+  background: var(--color-bg-alt-2);
+}
+
+.achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.achievement-list li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+}
+
+.achievement-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold-500);
+}
+
+.achievement-list__empty {
+  color: var(--color-text-muted);
+}
+
+.achievement-list__empty::before {
+  display: none;
+}
+
+.doc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+/* ---------- 20c. Location preview (home) ---------- */
+.location-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-7);
+}
+
+.location-preview__icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.location-preview__body {
+  flex: 1;
+}
+
+.location-preview__body h2 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-2);
+}
+
+.location-preview__body p {
+  font-size: var(--fs-sm);
+}
+
+.location-preview__cta {
+  flex-shrink: 0;
+  gap: var(--space-2);
+}
+
+.location-preview__arrow {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.location-preview__cta:hover .location-preview__arrow {
+  transform: translateX(4px);
+}
+
+/* ---------- 20d. Contact page ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.contact-info-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+}
+
+.contact-info-card h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-5);
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.contact-info-list li {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.contact-info-list__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--color-gold-100);
+  color: var(--color-gold-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-info-list h3 {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-1);
+}
+
+.contact-info-list p {
+  font-size: var(--fs-sm);
+}
+
+.contact-map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-map__embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-map__embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.contact-map__link {
+  align-self: flex-start;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-navy-700);
+  transition: color var(--transition-fast);
+}
+
+.contact-map__link:hover {
+  color: var(--color-gold-600);
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-4);
+  text-align: center;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.social-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+.social-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--color-navy-900);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-card span:last-child {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+.contact-form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contact-form-wrap .form-card {
+  text-align: left;
+}
+
+.input-wrap textarea {
+  width: 100%;
+  padding: 0.85rem var(--space-4) 0.85rem 2.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-family: inherit;
+  background: var(--color-white);
+  resize: vertical;
+  transition: border-color var(--transition-fast);
+}
+
+.input-wrap textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input-wrap textarea:focus {
+  border-color: var(--color-navy-700);
+}
+
+.input-wrap--textarea svg {
+  top: var(--space-4);
+  transform: none;
+}
+
+.toast {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-navy-900);
+  color: var(--color-white);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.toast__icon {
+  color: var(--color-gold-500);
+  flex-shrink: 0;
+}
+
+/* ---------- 21. Responsive ---------- */
+@media (max-width: 1024px) {
+  .agenda-grid,
+  .ekskul-grid,
+  .prestasi-grid,
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .staff-grid,
+  .staff-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sejarah,
+  .visi-misi,
+  .dinamika,
+  .program-showcase,
+  .program-feature,
+  .keunggulan-features,
+  .graduation-grid,
+  .contact-grid,
+  .video-intro__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .struktur__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+
+  .hero__content h1,
+  .page-header h1 {
+    font-size: var(--fs-2xl);
+  }
+
+  .sambutan__card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .sambutan__photo {
+    margin-inline: auto;
+  }
+
+  .agenda-grid,
+  .ekskul-grid,
+  .prestasi-grid,
+  .staff-grid,
+  .staff-grid--3col,
+  .struktur__row,
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .program-mini-card,
+  .ekskul-marquee .ekskul-card {
+    flex-basis: 240px;
+  }
+
+  .graduation-status__meta {
+    gap: var(--space-6);
+  }
+
+  .score-table th,
+  .score-table td {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .location-preview {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---------- 22. Bottom Nav (mobile app shell) ---------- */
+.bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Jarak antar section dirapetin biar berasa konten app, bukan halaman panjang */
+  section {
+    padding-block: var(--space-6);
+  }
+
+  /* Bottom nav fixed on mobile */
+  .portal-shell {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+
+  .absen-toolbar {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+
+  .absen-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    background: var(--color-bg-page);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -4px 16px rgba(43, 27, 14, 0.06);
+    margin: 0;
+  }
+
+  .absen-toolbar {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .siswa-list {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .page-header {
+    padding-block: var(--space-3) var(--space-4);
+    background: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Top bar: dulu 1 kolom (brand doang), sekarang 2 kolom biar
+     ada tempat buat icon Login Guru di kanan. */
+  .site-header .container {
+    grid-template-columns: 1fr auto;
+    justify-content: start;
+    height: 52px;
+  }
+
+  .nav-guru-link {
+    grid-column: 2;
+    justify-self: end;
+    padding: 0.4rem;
+    border-radius: 999px;
+  }
+
+  .nav-guru-link__label {
+    /* Cuma disembunyikan visual, tetap kebaca screen reader --
+       ruang top bar mobile kesempitan buat teks + icon. */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .nav-guru-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .has-back .nav-guru-link {
+    display: none;
+  }
+
+  .brand {
+    font-size: var(--fs-sm);
+  }
+
+  .brand__logo {
+    height: 22px;
+    width: auto;
+  }
+
+  /* Back-bar: dipakai halaman "detail" yang bukan tab utama (Agenda, Staf Pengajar) */
+  .has-back .site-header .brand {
+    display: none;
+  }
+
+  .has-back .header-back {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-sm);
+    color: var(--color-navy-900);
+  }
+
+  .has-back .header-back svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  /* Page header -> strip tipis nyambung sama top bar, bukan banner terpisah */
+  .page-header {
+    padding-block: var(--space-3) var(--space-4);
+    background: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .page-header h1 {
+    font-size: var(--fs-lg);
+    margin-bottom: 0;
+  }
+
+  .page-header p {
+    display: none;
+  }
+
+  .page-header .eyebrow {
+    display: none;
+  }
+
+  .has-back .page-header {
+    display: none;
+  }
+
+  /* Footer -> potong jadi strip minimal, bukan footer website 4 kolom */
+  .footer-top {
+    display: none;
+  }
+
+  .site-footer {
+    background: var(--color-navy-900);
+  }
+
+  .footer-bottom {
+    padding-block: var(--space-4);
+    font-size: 10px;
+  }
+
+  /* Hero -> compact cream card, bukan foto full-bleed gelap */
+  .hero {
+    min-height: 0;
+    /* Latar disamain sama warna halaman biar kartu cream-nya yang "maju".
+       Sebelumnya bg-alt-2 vs gold-100 itu dua cream yang beda tipis -> keruh. */
+    background: var(--color-bg-page);
+    color: var(--color-text-primary);
+    padding-block: var(--space-4) var(--space-5);
+  }
+
+  .hero .container {
+    padding-inline: var(--space-4);
+  }
+
+  .hero__content {
+    background: var(--color-gold-100);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    max-width: none;
+  }
+
+  .hero__content h1 {
+    font-size: var(--fs-lg);
+    color: var(--color-navy-900);
+    margin-bottom: var(--space-3);
+  }
+
+  .hero__content p {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__actions {
+    gap: var(--space-2);
+  }
+
+  .hero__actions .btn {
+    padding: 0.6rem 1.1rem;
+    font-size: var(--fs-xs);
+  }
+
+  /* Page header (halaman dalam) -> lebih ringkas */
+  .page-header {
+    padding-block: var(--space-6) var(--space-5);
+  }
+
+  .page-header h1 {
+    font-size: var(--fs-xl);
+  }
+
+  .page-header p {
+    font-size: var(--fs-sm);
+  }
+
+  /* Sambutan -> kartu ringkas horizontal */
+  .sambutan__card {
+    grid-template-columns: auto 1fr;
+    text-align: left;
+    padding: var(--space-4);
+    gap: var(--space-4);
+    border-radius: var(--radius-md);
+    box-shadow: none;
+    border: 1px solid var(--color-border);
+  }
+
+  .sambutan__photo {
+    width: 48px;
+    height: 48px;
+    margin-inline: 0;
+    border-width: 2px;
+  }
+
+  .sambutan__body h2 {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-1);
+  }
+
+  .sambutan__body blockquote {
+    font-size: var(--fs-xs);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Agenda / Prestasi / Staff -> grid 2 kolom, kartu ringkas */
+  .agenda-grid,
+  .prestasi-grid,
+  .staff-grid,
+  .staff-grid--3col {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-3);
+  }
+
+  .agenda-card,
+  .staff-card {
+    border-radius: var(--radius-md);
+    border-color: var(--color-border);
+  }
+
+  .staff-card {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .staff-card__photo {
+    width: 56px;
+    height: 56px;
+    margin-bottom: var(--space-2);
+  }
+
+  .staff-card h3 {
+    font-size: var(--fs-xs);
+  }
+
+  .staff-card__role {
+    font-size: 10px;
+    margin-bottom: 0;
+  }
+
+  .prestasi-card__media {
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-2);
+  }
+
+  .prestasi-card h3 {
+    font-size: var(--fs-xs);
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .prestasi-card p {
+    font-size: 10px;
+    margin-bottom: 0;
+  }
+
+  .agenda-card__body h3 {
+    font-size: var(--fs-xs);
+  }
+
+  body {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+
+  .bottom-nav {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    background: var(--color-bg-page);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -4px 16px rgba(43, 27, 14, 0.06);
+  }
+
+  .bottom-nav__list {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 6px 2px calc(6px + env(safe-area-inset-bottom));
+  }
+
+  .bottom-nav__item {
+    flex: 1;
+    display: flex;
+  }
+
+  .bottom-nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 1;
+    padding: 4px 2px;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .bottom-nav__link svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  .bottom-nav__link.is-active {
+    color: var(--color-gold-600);
+    font-weight: 600;
+  }
+}
+
+
+/* ==========================================================
+   23. APP SHELL — komponen & utilitas khusus mobile
+   Base rules di bawah ini sengaja "netral" untuk desktop:
+   yang mobile-only di-display:none, dan .empty-state dibuat
+   persis seperti inline style lamanya supaya desktop nggak berubah.
+   ========================================================== */
+
+.mobile-only {
+  display: none;
+}
+
+/* Empty state (dulu inline style, dipindah ke class biar bisa di-override di mobile) */
+.empty-state {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--color-border-strong);
+}
+
+.empty-state p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.empty-state--fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state__icon {
+  display: none;
+}
+
+/* Komponen yang cuma dipakai di app shell mobile */
+.staff-strip,
+.struktur-strip {
+  display: none;
+}
+
+/* ---------- 24. Mobile app shell — penyempurnaan ---------- */
+@media (max-width: 768px) {
+
+  /* ===== Utilitas ===== */
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* ===== Ritme halaman ===== */
+  section {
+    padding-block: var(--space-5);
+  }
+
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  /* Urutan konten Beranda dibedain dari DOM order (desktop tetap aman) */
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero          { order: 1; }
+  .sambutan      { order: 2; }
+  .home-agenda   { order: 3; }
+  .home-prestasi { order: 4; }
+  .home-staf     { order: 5; }
+  .home-ekskul   { order: 6; }
+  .home-lokasi   { order: 7; }
+
+  /* ===== Section head ringkas: judul kiri, link kanan ===== */
+  .section-head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .section-head__text h2 {
+    font-size: var(--fs-md);
+    margin-bottom: 0;
+  }
+
+  .section-head__text p {
+    display: none;
+  }
+
+  .link-arrow {
+    font-size: var(--fs-xs);
+    color: var(--color-gold-600);
+  }
+
+  .section-intro {
+    margin-bottom: var(--space-4);
+  }
+
+  .section-intro h2 {
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-2);
+  }
+
+  .section-intro p {
+    font-size: var(--fs-xs);
+  }
+
+  /* ===== Empty state: kartu tipis, bukan kotak dashed tebal ===== */
+  .empty-state {
+    padding: var(--space-6) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    /* .agenda-grid di agenda.html itu grid 2 kolom di mobile; empty state
+       harus ngambil lebar penuh, bukan nyempil di satu kolom. */
+    grid-column: 1 / -1;
+  }
+
+  .empty-state p {
+    font-size: var(--fs-xs);
+    line-height: var(--lh-normal);
+    max-width: 30ch;
+    margin-inline: auto;
+  }
+
+  .empty-state--fill {
+    display: block;
+    height: auto;
+  }
+
+  .empty-state__icon {
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin: 0 auto var(--space-3);
+    color: var(--color-text-muted);
+  }
+
+  .empty-state__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ===== BERANDA: baris avatar staf ===== */
+  .staff-strip {
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    padding-bottom: var(--space-1);
+    scrollbar-width: none;
+  }
+
+  .staff-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .staff-strip__item {
+    flex: 0 0 auto;
+    width: 56px;
+    text-align: center;
+    color: var(--color-text-secondary);
+  }
+
+  .staff-strip__item img {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    margin: 0 auto var(--space-1);
+    display: block;
+  }
+
+  .staff-strip__item span {
+    display: block;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  .staff-strip__more {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    border: 1px dashed var(--color-border-strong);
+    background: var(--color-bg-alt);
+    color: var(--color-gold-600);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-1);
+  }
+
+  /* ===== BERANDA: lokasi ===== */
+  .location-preview {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: none;
+    padding: var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .location-preview__body h2 {
+    font-size: var(--fs-sm);
+  }
+
+  .location-preview__body p {
+    font-size: var(--fs-xs);
+  }
+
+  .location-preview__cta {
+    font-size: var(--fs-xs);
+    padding: 0.5rem 1rem;
+  }
+
+  /* ===== PROFIL: deskripsi singkat ===== */
+  .sejarah {
+    gap: var(--space-4);
+  }
+
+  .sejarah__photo {
+    display: none;
+  }
+
+  .sejarah__text h2 {
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-2);
+  }
+
+  .sejarah__text p {
+    font-size: var(--fs-xs);
+    line-height: var(--lh-normal);
+  }
+
+  /* Paragraf kedua disembunyiin biar "deskripsi singkat" beneran singkat */
+  .sejarah__text p + p {
+    display: none;
+  }
+
+  /* ===== PROFIL: Visi — kartu cream, quote italic ===== */
+  .visi-misi {
+    gap: var(--space-4);
+  }
+
+  .visi-card {
+    background: var(--color-gold-100);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .visi-card .eyebrow {
+    color: var(--color-gold-600);
+    font-size: 10px;
+    margin-bottom: var(--space-2);
+  }
+
+  .visi-card blockquote {
+    font-size: var(--fs-sm);
+    font-style: italic;
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-normal);
+    color: var(--color-navy-800);
+  }
+
+  /* ===== PROFIL: Misi — list vertikal kartu kecil ===== */
+  .misi-card {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .misi-card h2 {
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-3);
+  }
+
+  .misi-list {
+    gap: var(--space-2);
+  }
+
+  .misi-item {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3);
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  /* Icon diseragamin jadi centang (SVG asli disembunyiin, diganti mask centang) */
+  .misi-item__icon {
+    width: 22px;
+    height: 22px;
+    background: var(--color-gold-100);
+    color: var(--color-gold-600);
+    position: relative;
+    margin-top: 2px;
+  }
+
+  .misi-item__icon svg {
+    display: none;
+  }
+
+  .misi-item__icon::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6L9 17l-5-5'/></svg>") center / contain no-repeat;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6L9 17l-5-5'/></svg>") center / contain no-repeat;
+  }
+
+  .misi-item h3 {
+    font-size: var(--fs-xs);
+    margin-bottom: 2px;
+  }
+
+  .misi-item p {
+    font-size: 11px;
+    line-height: var(--lh-normal);
+    color: var(--color-text-secondary);
+  }
+
+  /* ===== PROFIL: Struktur Organisasi — strip horizontal ===== */
+  .struktur {
+    text-align: left;
+  }
+
+  .struktur__lead,
+  .struktur__connector,
+  .struktur__row {
+    display: none;
+  }
+
+  .struktur-strip {
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+    scrollbar-width: none;
+  }
+
+  .struktur-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .struktur-strip__item {
+    flex: 0 0 auto;
+    width: 72px;
+    text-align: center;
+    color: var(--color-text-primary);
+  }
+
+  .struktur-strip__item img {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    display: block;
+    margin: 0 auto var(--space-2);
+  }
+
+  .struktur-strip__name {
+    display: block;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    line-height: 1.3;
+  }
+
+  .struktur-strip__role {
+    display: block;
+    font-size: 9px;
+    color: var(--color-text-muted);
+    line-height: 1.3;
+  }
+
+  .struktur-strip__more {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    border: 1px dashed var(--color-border-strong);
+    background: var(--color-bg-alt);
+    color: var(--color-gold-600);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-2);
+  }
+
+  .struktur-strip__item--more {
+    opacity: 0.55;
+  }
+
+  /* ===== PRESTASI: kartu foto dokumentasi + badge tingkat ===== */
+  .prestasi-card {
+    position: relative;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .prestasi-card__media {
+    position: relative;
+    width: auto;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+    overflow: hidden;
+    margin-bottom: var(--space-3);
+    background: var(--color-bg-alt);
+  }
+
+  .prestasi-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .prestasi-card__badge {
+    top: var(--space-2);
+    right: var(--space-2);
+    left: auto;
+    font-size: 9px;
+    font-weight: var(--fw-semibold);
+    line-height: 1;
+    padding: 4px 7px;
+    background: rgba(255, 253, 250, 0.92);
+    color: var(--color-navy-800);
+  }
+
+  .prestasi-card h3 {
+    line-height: var(--lh-normal);
+    margin-bottom: var(--space-1);
+    padding-inline: var(--space-3);
+  }
+
+  .prestasi-card p {
+    color: var(--color-text-muted);
+    padding: 0 var(--space-3) var(--space-3);
+  }
+
+  /* ===== EKSTRAKURIKULER: empty state di tengah ===== */
+  .ekskul-empty-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+  }
+
+  /* ===== KONTAK ===== */
+  .contact-grid {
+    gap: var(--space-4);
+  }
+
+  .contact-info-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: none;
+    padding: var(--space-4);
+  }
+
+  .contact-info-card h2 {
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-info-list {
+    gap: var(--space-3);
+  }
+
+  .contact-info-list li {
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .contact-info-list__icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .contact-info-list__icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .contact-info-list h3 {
+    font-size: 10px;
+    font-weight: var(--fw-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1px;
+  }
+
+  .contact-info-list p {
+    font-size: var(--fs-xs);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  /* ===== STAF PENGAJAR (halaman detail) ===== */
+  .has-back main > section:first-of-type {
+    padding-top: var(--space-5);
+  }
+
+  .staff-card {
+    box-shadow: none;
+  }
+
+  .staff-card:hover {
+    box-shadow: none;
+    transform: none;
+  }
+
+  .staff-card h3 {
+    line-height: var(--lh-normal);
+  }
+
+  /* ===== Top bar halaman detail ===== */
+  .has-back .site-header .container {
+    grid-template-columns: 1fr;
+  }
+
+  .has-back .header-back {
+    grid-column: 1;
+    justify-self: start;
+  }
+}
+
+/* ---------- 25. Mobile app shell — perbaikan kontras & trimming ---------- */
+@media (max-width: 768px) {
+
+  /* Footer dihapus total di mobile. Bottom nav udah jadi anchor navigasi,
+     strip copyright gelap di bawahnya cuma nabrak sama bottom nav. */
+  .site-footer {
+    display: none;
+  }
+
+  /* Hero: tombol sekunder dulu pakai .btn-outline-light (teks putih) padahal
+     latarnya sekarang cream -> teksnya ilang. Disamain ke gaya outline gelap. */
+  .hero__actions .btn-outline-light {
+    background: transparent;
+    color: var(--color-navy-800);
+    border-color: var(--color-border-strong);
+  }
+
+  .hero__content {
+    border-color: var(--color-border-strong);
+    border-radius: var(--radius-md);
+  }
+
+  .hero__content h1 {
+    font-size: var(--fs-lg);
+    letter-spacing: -0.02em;
+  }
+
+  .hero__content p {
+    font-size: var(--fs-xs);
+    line-height: var(--lh-normal);
+  }
+}

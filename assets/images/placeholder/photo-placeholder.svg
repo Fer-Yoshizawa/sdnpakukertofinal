@@ -1,0 +1,6 @@
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Foto belum tersedia">
+  <rect width="400" height="260" fill="#f7ecd9"/>
+  <rect x="24" y="24" width="352" height="212" rx="12" fill="none" stroke="#d8c3a1" stroke-width="2" stroke-dasharray="6 8"/>
+  <circle cx="150" cy="110" r="22" fill="#d8c3a1"/>
+  <path d="M70 190l70-64 46 42 30-28 84 78v6a10 10 0 01-10 10H80a10 10 0 01-10-10z" fill="#d8c3a1"/>
+</svg>

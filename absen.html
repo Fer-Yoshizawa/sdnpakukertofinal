@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Guru — Absen Online — SDN Pakukerto II</title>
+  <meta name="description" content="Portal absen online guru SDN Pakukerto II." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/absen.css" />
+</head>
+<body>
+
+  <div class="portal-shell">
+
+    <!-- ===================== LAYAR 1: LOGIN ===================== -->
+    <div id="screen-login" style="display:flex; flex-direction:column; flex:1;">
+
+      <header class="portal-topbar">
+        <a href="index.html" class="portal-topbar__brand">
+          <img class="portal-topbar__brand-logo" src="assets/logo/logo-spada.png" alt="" width="512" height="488" />
+          SDN PAKUKERTO II
+        </a>
+        <a href="index.html" class="portal-topbar__action">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Kembali ke situs
+        </a>
+      </header>
+
+      <div class="login-wrap">
+        <form id="login-form" class="login-card">
+          <p class="login-card__eyebrow">Portal Guru</p>
+          <h1>Masuk untuk absen</h1>
+
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="nama@sdnpakukerto2.sch.id" autocomplete="username" />
+          </div>
+
+          <div class="field">
+            <label for="login-password">Kata sandi</label>
+            <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+
+          <p id="login-error" class="field-error"></p>
+
+          <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+
+          <p class="login-card__note">
+            Tersambung ke Supabase. Coba:<br />
+            <code>guru1@sekolah.sim</code> / <code>guru123</code> &mdash; akun Guru Kelas 1<br />
+            <code>kepsek@sekolah.sim</code> / <code>kepsek123</code> &mdash; akun Kepala Sekolah
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- ===================== LAYAR 2: FORM ABSEN ===================== -->
+    <div id="screen-absen" style="display:none; flex-direction:column; flex:1;">
+
+      <header class="portal-topbar">
+        <span class="portal-topbar__brand">
+          <img class="portal-topbar__brand-logo" src="assets/logo/logo-spada.png" alt="" width="512" height="488" />
+          <span id="guru-name">Guru</span>
+        </span>
+        <div style="display:flex; align-items:center; gap: var(--space-4);">
+          <button type="button" id="btn-buka-rekap" class="portal-topbar__action" style="background:none;border:none;cursor:pointer;font:inherit;">
+            Rekap
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m5 14V9m5 10V13m5 6V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" id="btn-logout" class="portal-topbar__action" style="background:none;border:none;cursor:pointer;font:inherit;">
+            Keluar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="portal-main">
+        <div class="absen-toolbar">
+          <p class="absen-toolbar__kelas-label">
+            Absensi <strong id="nama-kelas-aktif">&mdash;</strong>
+          </p>
+          <div class="absen-toolbar__row">
+            <!-- Dropdown ini disembunyikan otomatis lewat JS kalau yang login
+                 role-nya "guru" -- kelasnya udah nempel ke akun, gak perlu dipilih. -->
+            <div class="field" style="margin-bottom:0;">
+              <label for="pilih-kelas">Kelas</label>
+              <select id="pilih-kelas"></select>
+            </div>
+            <div class="field" style="margin-bottom:0;">
+              <label for="pilih-tanggal">Tanggal</label>
+              <input type="date" id="pilih-tanggal" />
+            </div>
+          </div>
+
+          <div class="absen-summary">
+            <span class="absen-summary__chip" data-status="hadir">Hadir <strong id="count-hadir">0</strong></span>
+            <span class="absen-summary__chip" data-status="izin">Izin <strong id="count-izin">0</strong></span>
+            <span class="absen-summary__chip" data-status="sakit">Sakit <strong id="count-sakit">0</strong></span>
+            <span class="absen-summary__chip" data-status="alpa">Alpa <strong id="count-alpa">0</strong></span>
+          </div>
+        </div>
+
+        <div id="siswa-list" class="siswa-list">
+          <!-- diisi otomatis oleh js/absen.js -->
+        </div>
+      </main>
+
+
+      <div class="absen-footer">
+        <span id="progress-text" class="absen-footer__hint">0/0 siswa sudah ditandai</span>
+        <button type="button" id="btn-simpan" class="btn btn-primary btn-sm">Simpan Absensi</button>
+      </div>
+    </div>
+
+    <!-- ===================== LAYAR 3: REKAP (SIMULASI) ===================== -->
+    <div id="screen-rekap" style="display:none; flex-direction:column; flex:1;">
+
+      <header class="portal-topbar">
+        <button type="button" id="btn-tutup-rekap" class="portal-topbar__action" style="background:none;border:none;cursor:pointer;font:inherit;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Kembali
+        </button>
+        <span class="portal-topbar__brand">Rekap Absensi</span>
+      </header>
+
+      <main class="portal-main">
+        <p class="rekap-disclaimer">
+          Rekap ini dibaca langsung dari database Supabase, jadi datanya tersimpan
+          permanen &mdash; tetap ada walau tab ditutup atau di-refresh.
+        </p>
+
+        <!-- Filter status. Disembunyiin oleh js/absen.js kalau belum ada absensi
+             tersimpan (gak ada yang bisa difilter). Pilih salah satu; pilih
+             selain "Semua" = semua rincian otomatis kebuka biar nama langsung
+             kelihatan. Tombolnya makai ulang .status-btn dari form absen, jadi
+             warna Izin/Sakit/Alpa saat aktif sama persis kayak di form. -->
+        <div id="rekap-filter" class="rekap-filter" role="group" aria-label="Filter status siswa" hidden>
+          <button type="button" class="status-btn is-active" data-filter="semua" data-status="semua" aria-pressed="true">Semua</button>
+          <button type="button" class="status-btn" data-filter="absen" data-status="absen" aria-pressed="false">Tidak hadir</button>
+          <button type="button" class="status-btn" data-filter="izin" data-status="izin" aria-pressed="false">Izin</button>
+          <button type="button" class="status-btn" data-filter="sakit" data-status="sakit" aria-pressed="false">Sakit</button>
+          <button type="button" class="status-btn" data-filter="alpa" data-status="alpa" aria-pressed="false">Alpa</button>
+        </div>
+
+        <div id="rekap-list" class="rekap-list">
+          <!-- diisi otomatis oleh js/absen.js -->
+        </div>
+      </main>
+    </div>
+
+  </div>
+
+  <div id="dummy-toast" class="dummy-toast"></div>
+
+  <script src="js/absen.js" defer></script>
+</body>
+</html>

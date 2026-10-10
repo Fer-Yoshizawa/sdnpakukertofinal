@@ -1,0 +1,580 @@
+/* ==========================================================
+   PORTAL GURU — Absen Online
+   File terpisah dari style.css: fitur ini beda konteks (tool
+   internal guru, bukan halaman publik), jadi CSS-nya juga
+   dipisah biar style.css utama gak makin gemuk dan gampang
+   dicari kalau nanti ada bug di salah satu bagian.
+   Semua token warna/spasi/radius tetap dari variables.css.
+   ========================================================== */
+
+.portal-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-page);
+}
+
+.portal-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  color: var(--color-navy-900);
+}
+
+.portal-topbar__brand svg,
+.portal-topbar__brand img {
+  height: 20px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+.portal-topbar__action {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.portal-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-4);
+}
+
+/* ---------- Login ---------- */
+.login-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 340px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+}
+
+.login-card__eyebrow {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold-600);
+  margin-bottom: var(--space-1);
+}
+
+.login-card h1 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-navy-900);
+  margin-bottom: var(--space-5);
+}
+
+.field {
+  margin-bottom: var(--space-4);
+}
+
+.field label {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.8rem;
+  transition: border-color var(--transition-fast);
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-gold-500);
+}
+
+.field-error {
+  display: none;
+  font-size: var(--fs-xs);
+  color: var(--tag-lomba-text);
+  margin-top: var(--space-1);
+}
+
+.field-error.is-visible {
+  display: block;
+}
+
+.login-card__note {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: var(--lh-normal);
+}
+
+.login-card__note code {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 10px;
+  color: var(--color-text-secondary);
+}
+
+.absen-toolbar__kelas-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.absen-toolbar__kelas-label strong {
+  color: var(--color-text-primary);
+  font-weight: var(--fw-bold);
+}
+
+.siswa-row__nisn {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+}
+
+/* ---------- Absen form ---------- */
+.absen-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.absen-toolbar__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.absen-summary {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+}
+
+.absen-summary__chip {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-xs);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-secondary);
+}
+
+.absen-summary__chip strong {
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+}
+
+.absen-summary__chip[data-status="hadir"] strong { color: var(--tag-akademik-text); }
+.absen-summary__chip[data-status="izin"] strong  { color: var(--tag-sekolah-text); }
+.absen-summary__chip[data-status="sakit"] strong { color: var(--tag-prakerin-text); }
+.absen-summary__chip[data-status="alpa"] strong  { color: var(--tag-lomba-text); }
+
+.siswa-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.siswa-row {
+  /* Kolom, bukan baris: nama & NISN di atas, status di bawah.
+     Sebelumnya row+space-between, dan pas nama kepanjangan jadi
+     2 baris, 4 tombol status kesempitan terus wrap 3+1 -- itu
+     penyebab kelihatan berantakan. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.siswa-row__name {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+.siswa-row__no {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.status-group {
+  /* Grid 2x2 tetap -- selalu rapi berapapun panjang nama di
+     atasnya, gak kayak flex-wrap yang jumlah tombol per baris
+     berubah-ubah tergantung sisa ruang. */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+.status-btn {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  padding: 0.55rem 0.5rem;
+  text-align: center;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text-secondary);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+@media (min-width: 480px) {
+  /* Layar lebih lega (tablet/laptop guru): balik jadi 1 baris
+     sejajar sama nama, gak perlu grid 2x2 lagi. */
+  .siswa-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .status-group {
+    grid-template-columns: repeat(4, auto);
+  }
+
+  .status-btn {
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+.status-btn[data-status="hadir"].is-active {
+  background: var(--tag-akademik-bg);
+  border-color: var(--tag-akademik-bg);
+  color: var(--tag-akademik-text);
+}
+
+.status-btn[data-status="izin"].is-active {
+  background: var(--tag-sekolah-bg);
+  border-color: var(--tag-sekolah-bg);
+  color: var(--tag-sekolah-text);
+}
+
+.status-btn[data-status="sakit"].is-active {
+  background: var(--tag-prakerin-bg);
+  border-color: var(--tag-prakerin-bg);
+  color: var(--tag-prakerin-text);
+}
+
+.status-btn[data-status="alpa"].is-active {
+  background: var(--tag-lomba-bg);
+  border-color: var(--tag-lomba-bg);
+  color: var(--tag-lomba-text);
+}
+
+.absen-footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--color-bg-page);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-3) var(--space-4);
+  margin: 0 calc(-1 * var(--space-4)) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.absen-footer__hint {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* Toast konfirmasi simpan (dummy, belum kesambung database) */
+.dummy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 76px;
+  transform: translateX(-50%) translateY(12px);
+  opacity: 0;
+  visibility: hidden;
+  background: var(--color-navy-900);
+  color: var(--color-text-on-dark);
+  font-size: var(--fs-xs);
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 80;
+  max-width: 90%;
+  text-align: center;
+}
+
+.dummy-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- Rekap (simulasi) ---------- */
+.rekap-disclaimer {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  line-height: var(--lh-normal);
+  margin-bottom: var(--space-5);
+}
+
+.rekap-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6); /* jarak antar kelas; jarak antar kartu ada di .rekap-kelas__list */
+}
+
+/* ---------- Rekap: grup per kelas ---------- */
+.rekap-kelas__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.rekap-kelas__title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+}
+
+.rekap-kelas__count {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.rekap-kelas__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rekap-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.rekap-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.rekap-card__tanggal {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+}
+
+/* Dulu .rekap-card__kelas (nama kelas). Sekarang kelas udah jadi
+   heading grup, jadi sisi kanan kartu dipakai buat jumlah siswa. */
+.rekap-card__meta {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* Kartu rekap makai ulang .absen-summary / .absen-summary__chip
+   yang udah ada di toolbar absen -- gak bikin style angka baru. */
+.rekap-card .absen-summary {
+  overflow-x: visible;
+  flex-wrap: wrap;
+}
+
+/* ---------- Rekap: rincian per siswa ---------- */
+.rekap-detail {
+  margin-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.rekap-detail__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px; /* area tap yang enak di HP */
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  list-style: none; /* buang segitiga bawaan browser, diganti chevron */
+}
+
+.rekap-detail__toggle::-webkit-details-marker {
+  display: none; /* Safari/Chrome lama masih nampilin marker lewat ini */
+}
+
+.rekap-detail__chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.rekap-detail[open] .rekap-detail__chevron {
+  transform: rotate(180deg);
+}
+
+/* Nomor & nama makai ulang .siswa-row__no / .siswa-row__name dari form
+   absen. Yang baru cuma susunan barisnya: daftar rapat berpemisah garis
+   tipis, bukan kartu-dalam-kartu. */
+.rekap-siswa__row {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Di form, nama itu semibold karena jadi fokus baris. Di rincian ini
+   daftarnya read-only dan yang perlu kelihatan justru statusnya, jadi
+   nama diturunin ke medium (nama di data huruf kapital semua, kalau
+   semibold 37 baris berasa berat). */
+.rekap-siswa__row .siswa-row__name {
+  font-weight: var(--fw-medium);
+}
+
+/* Badge status: warnanya sama persis kayak .status-btn.is-active di form
+   (token tag yang sama). Sengaja BUKAN .tag dari style.css karena .tag
+   itu pill, sedangkan badge kecil di proyek ini pakai --radius-sm. */
+.status-badge {
+  min-width: 3.25rem; /* lebar seragam, biar kolom badge rapi */
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status-badge[data-status="hadir"] {
+  background: var(--tag-akademik-bg);
+  color: var(--tag-akademik-text);
+}
+
+.status-badge[data-status="izin"] {
+  background: var(--tag-sekolah-bg);
+  color: var(--tag-sekolah-text);
+}
+
+.status-badge[data-status="sakit"] {
+  background: var(--tag-prakerin-bg);
+  color: var(--tag-prakerin-text);
+}
+
+.status-badge[data-status="alpa"] {
+  background: var(--tag-lomba-bg);
+  color: var(--tag-lomba-text);
+}
+
+/* ---------- Rekap: filter status ---------- */
+/* Tombolnya makai ulang .status-btn dari form absen (pill, warna aktif
+   Izin/Sakit/Alpa udah ada di sana). Di sini cuma susunan barisnya + dua
+   pilihan yang belum punya warna: "Semua" dan "Tidak hadir". Bukan gold:
+   layar rekap gak punya aksi utama, jadi gak ada yang berhak dapat gold. */
+.rekap-filter {
+  display: flex;
+  flex-wrap: wrap; /* di layar sempit turun ke baris kedua, bukan kepotong */
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+/* PENTING: .rekap-filter nge-set display:flex, dan CSS buatan kita
+   ngalahin aturan [hidden] bawaan browser. Tanpa baris ini, atribut
+   hidden bakal diabaikan dan filter tetap kelihatan di empty state. */
+.rekap-filter[hidden] {
+  display: none;
+}
+
+/* .status-btn aslinya didesain buat sel grid 2x2 yang lebar (di form), jadi
+   padding-nya tipis. Di baris pill begini "Izin" cuma ~39px lebar -- kekecilan
+   buat jempol. Tinggi min 40px + padding samping lebih lega; angkanya dipilih
+   supaya 5 tombol masih muat 1 baris di 390px (di layar lebih sempit, wrap). */
+.rekap-filter .status-btn {
+  min-height: 40px;
+  padding-inline: 0.75rem;
+}
+
+.status-btn[data-status="semua"].is-active,
+.status-btn[data-status="absen"].is-active {
+  background: var(--color-bg-alt-2);
+  border-color: var(--color-navy-700);
+  color: var(--color-text-primary);
+}
+
+/* Filter nyala: sembunyiin baris siswa yang gak cocok. Selektor ini lebih
+   spesifik dari .rekap-siswa__row (display:grid), jadi menang tanpa peduli
+   urutan. "absen" = semua KECUALI hadir; izin/sakit/alpa = cuma status itu. */
+.rekap-list[data-filter="absen"] .rekap-siswa__row[data-status="hadir"],
+.rekap-list[data-filter="izin"] .rekap-siswa__row:not([data-status="izin"]),
+.rekap-list[data-filter="sakit"] .rekap-siswa__row:not([data-status="sakit"]),
+.rekap-list[data-filter="alpa"] .rekap-siswa__row:not([data-status="alpa"]) {
+  display: none;
+}
+
+/* Pesan "Semua siswa hadir." / "Tidak ada yang izin." dst -- tiap pesan
+   cuma kelihatan saat filter kategorinya sendiri yang nyala. */
+.rekap-siswa__kosong {
+  display: none;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.rekap-list[data-filter="absen"] .rekap-siswa__kosong[data-kosong="absen"],
+.rekap-list[data-filter="izin"] .rekap-siswa__kosong[data-kosong="izin"],
+.rekap-list[data-filter="sakit"] .rekap-siswa__kosong[data-kosong="sakit"],
+.rekap-list[data-filter="alpa"] .rekap-siswa__kosong[data-kosong="alpa"] {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .portal-main {
+    max-width: 560px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}

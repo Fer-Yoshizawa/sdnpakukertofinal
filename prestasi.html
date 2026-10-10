@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prestasi Gemilang — SDN Pakukerto II</title>
+  <meta name="description" content="Prestasi siswa-siswi SDN Pakukerto II di berbagai kompetisi." />
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img class="brand__logo" src="assets/logo/logo-spada.png" alt="" width="512" height="488" />
+        SDN PAKUKERTO II
+      </a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="index.html">Beranda</a>
+        <a href="profil-sekolah.html">Profil Sekolah</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="prestasi.html" aria-current="page">Prestasi</a>
+        <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
+        <a href="contact.html">Kontak</a>
+      </nav>
+      <a href="absen.html" class="nav-guru-link">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="nav-guru-link__label">Login Guru</span>
+      </a>
+    </div>
+  </header>
+  <!--
+    Catatan: menu "Portal Siswa/Guru/Ortu" (login absensi & nilai) sengaja belum
+    dipasang di Fase 1 ini karena fiturnya belum dibangun. Rencananya akan
+    ditambahkan lagi sebagai modul Portal Akademik terpisah di Fase 2.
+  -->
+  <nav class="bottom-nav" aria-label="Navigasi aplikasi">
+    <ul class="bottom-nav__list">
+      <li class="bottom-nav__item">
+        <a href="index.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><path d="M4 11.5L12 4l8 7.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9a1 1 0 001 1h4v-6h2v6h4a1 1 0 001-1v-9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Beranda</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="profil-sekolah.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><path d="M4 21V6l8-3 8 3v15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-6h6v6M9 10h.01M15 10h.01M9 14h.01M15 14h.01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Profil</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="prestasi.html" class="bottom-nav__link is-active">
+          <svg viewBox="0 0 24 24"><path d="M8 4h8v4a4 4 0 01-8 0V4z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 5H5v2a3 3 0 003 3M16 5h3v2a3 3 0 01-3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12v4m-3 4h6m-3 0v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Prestasi</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="ekstrakurikuler.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke-width="2"/><path d="M12 4c2.5 2.5 2.5 13 0 16M12 4c-2.5 2.5-2.5 13 0 16M4.5 9h15M4.5 15h15" stroke-width="1.6"/></svg>
+          <span>Ekskul</span>
+        </a>
+      </li>
+      <li class="bottom-nav__item">
+        <a href="contact.html" class="bottom-nav__link">
+          <svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2 2C10.5 20 4 13.5 4 6a2 2 0 011-2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Kontak</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header page-header--center">
+      <div class="container">
+        <h1>Prestasi Gemilang</h1>
+        <p>Merayakan dedikasi, kerja keras, dan inovasi siswa-siswi SDN Pakukerto II dalam berbagai kompetisi tingkat regional hingga nasional.</p>
+      </div>
+    </div>
+
+    <section class="section--alt">
+      <div class="container">
+        <div class="prestasi-grid">
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Harapan II Festival BTQ (Tartil) Kecamatan Sukorejo Tahun 2024</h3>
+            <p>Dela &middot; Kelas VI</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara I Karate Putri O2SN Kecamatan Sukorejo Tahun 2024</h3>
+            <p>Jelita &middot; Kelas III</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara II Bulutangkis Putri O2SN Kecamatan Sukorejo Tahun 2024</h3>
+            <p>Raisya &middot; Kelas V</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara I Menyanyi Solo FLS2N Kecamatan Sukorejo Tahun 2024</h3>
+            <p>Sherin &middot; Kelas V</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara III Seni Tari FLS2N Kecamatan Sukorejo Tahun 2024</h3>
+            <p>Naili, Reva, Claudia &middot; Kelas IV</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara III Gambar Bercerita FLS2N Kecamatan Sukorejo Tahun 2024</h3>
+            <p>Naila &middot; Kelas III</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kabupaten</span>
+            </div>
+            <h3>Juara II Menyanyi Solo FLS2N Kabupaten Pasuruan Tahun 2024</h3>
+            <p>Sherin &middot; Kelas V</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara I Menyanyi Solo FLS3N Kecamatan Sukorejo Tahun 2025</h3>
+            <p>Jessie Aprielia Putri &middot; Kelas V</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara I Mendongeng FLS3N Kecamatan Sukorejo Tahun 2025</h3>
+            <p>Dzakiyyah Talita Sakhi &middot; Kelas V</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara Harapan II Tari FLS3N Kecamatan Sukorejo Tahun 2025</h3>
+            <p>Claudya Shiva Ramadhany, Revaliza Khasiya Nur Khusnia, Uzla Nayli Ramadhani &middot; Kelas V</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara III Gambar Bercerita FLS3N Kecamatan Sukorejo Tahun 2025</h3>
+            <p>Calista Nailah Ardania &middot; Kelas IV</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara III Cabor Bulutangkis O2SN Kecamatan Sukorejo Tahun 2025</h3>
+            <p>Juan Arbian Adhyastha Reynand &middot; Kelas IV</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/images/placeholder/photo-placeholder.svg" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara III Cabor Karate O2SN Kecamatan Sukorejo Tahun 2025</h3>
+            <p>Jelita Agustina Iswanto &middot; Kelas IV</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/PRESTASI%202026/FLS3N%20Gambar%20Bercerita.png" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara I Gambar Bercerita FLS3N Kecamatan Sukorejo Tahun 2026</h3>
+            <p>Calista Nailah Ardania &middot; Kelas V</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/PRESTASI%202026/FLS3N%20Tari.png" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Juara II Tari FLS3N Kecamatan Sukorejo Tahun 2026</h3>
+            <p>Jelita Agustina Iswanto (Kelas V), Naura Azka Ramadhani (Kelas IV), Aisyah Rahma Azzahra (Kelas IV)</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/PRESTASI%202026/FLS3N%20Pantomim.png" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Harapan I Pantomim FLS3N Kecamatan Sukorejo Tahun 2026</h3>
+            <p>Aisyah Ayudia Inara (Kelas III), Zhafirah Anastasya Putri Sarjono (Kelas IV)</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/PRESTASI%202026/FLS3N%20Kriya.png" alt="" />
+              <span class="prestasi-card__badge">Kecamatan</span>
+            </div>
+            <h3>Harapan II Kriya FLS3N Kecamatan Sukorejo Tahun 2026</h3>
+            <p>Nadin Zahra Ramadhani &middot; Kelas IV</p>
+          </article>
+
+          <article class="prestasi-card">
+            <div class="prestasi-card__media">
+              <img src="assets/PRESTASI%202026/Juara%202%20FLS3N%20Gambar%20Bercerita%20Tingkat%20Kab%20Pasuruan.jpg" alt="" />
+              <span class="prestasi-card__badge">Kabupaten</span>
+            </div>
+            <h3>Juara 2 Gambar Bercerita FLS3N Kabupaten Pasuruan Tahun 2026</h3>
+            <p>Calista Nailah Ardania &middot; Kelas V</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <p class="footer-brand__name">SDN PAKUKERTO II</p>
+        <p>Mewujudkan peserta didik yang beriman, bertaqwa, mengikuti tuntutan global, berkarakter, dan berprestasi.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Website resmi">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+          <a href="#" aria-label="Bagikan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="18" cy="5" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="12" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="19" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.1 10.8l7.8-4.4M8.1 13.2l7.8 4.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Tautan Cepat</h3>
+        <ul>
+          <li><a href="profil-sekolah.html">Profil Sekolah</a></li>
+          <li><a href="profil-sekolah.html#visi-misi">Visi Misi</a></li>
+          <li><a href="agenda.html">Agenda</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Informasi</h3>
+        <ul>
+          <li><a href="prestasi.html">Prestasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h3>Kontak Kami</h3>
+        <ul>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            <span>Jl. Bulu Sakti No. 34, Dusun Kemiri, Desa Pakukerto, Kecamatan Sukorejo</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5c0 8.3 6.7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            <span>081252031750</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 6.5l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+            <span>pakukerto2@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 SDN PAKUKERTO II. All rights reserved.</div>
+  </footer>
+
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
